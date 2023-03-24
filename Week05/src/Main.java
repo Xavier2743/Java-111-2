@@ -41,6 +41,18 @@ public class Main {
                 }
                 counter += number;
             }
+            System.out.println();
+        }
+
+        // deal the remaining cards
+        if (counter >= 52) {
+            System.out.println("No more remaining cards");
+        }
+        else {
+            System.out.println("The remaining cards are:");
+            for (int i = counter; i < 52; i++) {
+                System.out.println(deckAfterShuffling[i]);
+            }
         }
     }
 }
