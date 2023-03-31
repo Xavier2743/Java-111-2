@@ -22,37 +22,57 @@ public class Main {
             deckAfterShuffling[randomIndex] = temp;
         }
 
-        // deal
-        Scanner input = new Scanner(System.in);
-        int counter = 0;
+        // deal several cards
+        int counter = 0; // next new index
+        int number = 3; // number of cards to deal
 
-        for (int i = 0; i < 4; i++) {
-            System.out.print("How many cards do you want to deal? ");
-            int number = input.nextInt();
+        if (counter + number > 52) {
+            System.out.println("Out of cards");
+        }
+        else {
+            System.out.println("Deal " + number + " cards");
+            for (int j = counter; j < (counter + number); j++) {
+                System.out.println(deckAfterShuffling[j]);
+            }
+            counter += number;
+        }
+        System.out.println();
 
-            if (counter + number > 52) {
-                System.out.println("Out of cards");
-                break;
-            }
-            else {
-                for (int j = counter; j < (counter + number); j++) {
-//                    System.out.println(j);
-                    System.out.println(deckAfterShuffling[j]);
-                }
-                counter += number;
-            }
-            System.out.println();
+        // shuffle the remaining cards
+        for (int i = counter; i < deckAfterShuffling.length; i++) {
+            int randomIndex = random.nextInt(deckAfterShuffling.length - counter) + counter;
+            String temp = deckAfterShuffling[i];
+            deckAfterShuffling[i] = deckAfterShuffling[randomIndex];
+            deckAfterShuffling[randomIndex] = temp;
         }
 
-        // deal the remaining cards
-        if (counter >= 52) {
+        // deal several cards again
+        number = 2;
+        if (counter + number > 52) {
             System.out.println("No more remaining cards");
         }
         else {
-            System.out.println("The remaining cards are:");
-            for (int i = counter; i < 52; i++) {
+            System.out.println("Deal " + number + " cards");
+            for (int i = counter; i < (counter + number); i++) {
                 System.out.println(deckAfterShuffling[i]);
             }
+            counter += number;
+        }
+        System.out.println();
+
+        //shuffle after dealing
+        for (int i = 0; i < counter; i++) {
+            int randomIndex = random.nextInt(counter);
+            String temp = deckAfterShuffling[i];
+            deckAfterShuffling[i] = deckAfterShuffling[randomIndex];
+            deckAfterShuffling[randomIndex] = temp;
+        }
+
+        // deal several cards after shuffling
+        number = 4;
+        System.out.println("Deal " + number + " cards");
+        for (int i = 0; i < number; i++) {
+            System.out.println(deckAfterShuffling[i]);
         }
     }
 }
