@@ -3,15 +3,18 @@ public class Time {
     private int minute;
     private int second;
 
-    public void setTime(int hour) {
-        setTime(hour, 0, 0);
+    public Time() {
     }
 
-    public void setTime(int hour, int minute) {
-        setTime(hour, minute, 0);
+    public Time(int hour) {
+        this(hour, 0);
     }
 
-    public void setTime(int hour, int minute, int second) {
+    public Time(int hour, int minute) {
+        this(hour, minute, 0);
+    }
+
+    public Time(int hour, int minute, int second) {
         if (hour < 0 || hour > 23) {
             throw new IllegalArgumentException("Invalid hour");
         }
@@ -23,6 +26,39 @@ public class Time {
         }
         this.hour = hour;
         this.minute = minute;
+        this.second = second;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        if (hour < 0 || hour > 23) {
+            throw new IllegalArgumentException("Invalid hour");
+        }
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        if (minute < 0 || minute > 59) {
+            throw new IllegalArgumentException("Invalid minute");
+        }
+        this.minute = minute;
+    }
+
+    public int getSecond() {
+        return second;
+    }
+
+    public void setSecond(int second) {
+        if (second < 0 || second > 59) {
+            throw new IllegalArgumentException("Invalid second");
+        }
         this.second = second;
     }
 
