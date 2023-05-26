@@ -62,6 +62,16 @@ public class Time {
         this.second = second;
     }
 
+    public void setTime(int hour, int minute, int second) {
+        setHour(hour);
+        setMinute(minute);
+        setSecond(second);
+    }
+
+    public void setTime(Time time) {
+        setTime(time.getHour(), time.getMinute(), time.getSecond());
+    }
+
     public String toString() {
         return String.format("%02d-%02d-%02d %s",
                 ((hour == 0 || hour == 12) ? 12 : hour % 12),
