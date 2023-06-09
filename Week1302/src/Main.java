@@ -1,3 +1,5 @@
+import ch8_9.Book;
+
 public class Main {
     public static void main(String[] args) {
         Time time1 = new Time(23, 10);
@@ -18,10 +20,12 @@ public class Main {
 
         try {
             time1.setTime(23, 10, 29);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.printf("Exception: %s%n%n", e.getMessage());
         }
         System.out.println(time1.toUniversalString());
+
+        for (Book book : Book.values())
+            System.out.println(book + ": " + book.getTitle() + "-" + book.getCopyRightYear());
     }
 }

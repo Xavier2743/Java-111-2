@@ -15,4 +15,12 @@ public enum Book {
         this.title = title;
         this.copyRightYear = copyRightYear;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCopyRightYear() {
+        return copyRightYear;
+    }
 }
