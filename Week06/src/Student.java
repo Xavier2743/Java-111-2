@@ -20,6 +20,13 @@ public class Student extends Person {
         return this.grade;
     }
 
+    public void setGrade(int grade) {
+        if (grade < 1 || grade > 12) {
+            throw new IllegalArgumentException("Grade must be between 1 and 12");
+        }
+        this.grade = grade;
+    }
+
     public HashMap<Course, ArrayList<Integer>> getScores() {
         return this.scores;
     }
@@ -42,21 +49,24 @@ public class Student extends Person {
         }
     }
 
-    public void printScores() {
-        System.out.println("Name: " + this.getName());
+    public String getTranscript() {
+        String output = this.getName() + "'s Transcript\n";
 
         for (Course course : this.scores.keySet()) {
-            System.out.println("Course: " + course.getName());
-            System.out.println("Teacher: " + course.getTeacher().getName());
-            if (this.scores.get(course).size() > 1) {
-                for (int score : this.scores.get(course)) {
-                    System.out.println("Score: " + score);
+            output += "\t" + course.getName() + ": ";
+
+            for (int i = 0; i < scores.get(course).size(); i++) {
+                if (i > 0) {
+                    output += ", " + scores.get(course).get(i);
+                }
+                else {
+                    output += scores.get(course).get(i);
                 }
             }
-            else {
-                System.out.println("Score: " + this.scores.get(course).toArray()[0]);
-            }
-            System.out.println();
+
+            output += "\n";
         }
+
+        return output;
     }
 }

@@ -8,44 +8,57 @@ public class Teacher extends Person {
         this.courses = new ArrayList<>();
     }
 
-    public void setCourses(Course course) {
-        this.courses.add(course);
-    }
-
     public ArrayList<Course> getCourses() {
         return this.courses;
     }
 
-    public void printStudents() {
-        for (Course course : this.courses) {
-            System.out.println("Teacher: " + this.getName());
-            System.out.println("Course: " + course.getName());
-            System.out.println("Students: ");
-            for (Student student : course.getStudents()) {
-                System.out.println(student.getName());
-            }
-            System.out.println();
-        }
+    public void setCourses(Course course) {
+        this.courses.add(course);
     }
 
-    public void printStudentsByCourse() {
+    public String getStudentList() {
+        String output = this.getName() + "'s Students\n";
+
         for (Course course : this.courses) {
-            System.out.println("Teacher: " + this.getName());
-            System.out.println("Course: " + course.getName());
-            System.out.println("Students: ");
-            for (Student student : course.getStudents()) {
-                System.out.print("\t" + student.getName() + ": ");
-                if (student.getScores().get(course).size() > 1) {
-                    for (int score : student.getScores().get(course)) {
-                        System.out.print(score + " ");
-                    }
-                    System.out.println();
+            output += "\t" + course.getName() + ": ";
+
+            for (int i = 0; i < course.getStudents().size(); i++) {
+                if (i > 0) {
+                    output += ", " + course.getStudents().get(i).getName();
                 }
                 else {
-                    System.out.print(student.getScores().get(course).toArray()[0]);
+                    output += course.getStudents().get(i).getName();
                 }
             }
-            System.out.println("\n");
+
+            output += "\n";
         }
+
+        return output;
+    }
+
+    public String getStudentScore() {
+        String output = this.getName() + "'s Student Score\n";
+
+        for (Course course: this.courses) {
+            output += "\t" + course.getName() + ":\n";
+
+            for (Student student : course.getStudents()) {
+                output += "\t\t" + student.getName() + ": ";
+
+                for (int i = 0; i < student.getScores().get(course).size(); i++) {
+                    if (i > 0) {
+                        output += ", " + student.getScores().get(course).get(i);
+                    }
+                    else {
+                        output += student.getScores().get(course).get(i);
+                    }
+                }
+
+                output += "\n";
+            }
+        }
+
+        return output;
     }
 }
