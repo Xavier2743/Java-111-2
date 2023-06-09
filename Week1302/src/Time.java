@@ -83,4 +83,16 @@ public class Time {
     public String toUniversalString() {
         return String.format("%02d-%02d-%02d", hour, minute, second);
     }
+
+    public String toUniversalString(Zone zone) {
+        if (zone == Zone.TW) {
+            return String.format("%02d-%02d-%02d", hour, minute, second);
+        } else {
+            return String.format("%02d-%02d-%02d", (hour + 12) % 24, minute, second);
+        }
+    }
+
+    enum Zone {
+        TW, US
+    }
 }
