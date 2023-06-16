@@ -29,7 +29,8 @@ public class Time {
         this.second = second;
     }
 
-    public int getHour() {
+    public int
+    getHour() {
         return hour;
     }
 
