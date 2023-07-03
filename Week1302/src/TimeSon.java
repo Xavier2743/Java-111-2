@@ -20,6 +20,11 @@ public class TimeSon extends Time {
         time.minute = super.getMinute();
         time.second = super.getSecond();
     }
+
+    @Override
+    public String toUniversalString() {
+        return String.format("%02d:%02d:%02d", getHour(), getMinute(), getSecond());
+    }
 }
 
 class TimeVariable {
